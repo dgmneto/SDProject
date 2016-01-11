@@ -1,0 +1,30 @@
+Codigos que serao usados na ULA, nos registradores e no controlador:
+
+ULA:
+000 - [ADD] soma A e B (output = B + A)
+001 - [SUB] subtrai A de B (output = B - A)
+010 - [COMP] complemento a 2 de A (output = ~A + 4'b0001)
+011 - [IGUAL] A eh igual a B (status = B == A)
+100 - [MAIOR] retorna o maior entre A e B (output = max(A, B))
+101 - [MENOR] retorna o menor entre A e B (output = min(A, B))
+110 - [AND] A and B (output = A & B)
+111 - [OR] A or B (output = A | B)
+
+Registradores:
+000 - [HOLD] segura o valor
+001 - [RESET] seta o valor para 4'b0000
+010 - [LOAD] carrega o valor da entrada
+011 - [ShiftLeft] realiza a translacao para esquerda do valor armazenado
+100 - [ShiftRight] realiza a translacao para a direita do valor armazenado
+
+Controlador(contem 3 registradores(x, y e z) e uma ULA):
+0000 - [CLR] limpa todos os registradores
+0001 - [CLRLD] limpa os registradores y e z e carrega x com a entrada
+0010 - [LOADX] carrega x com a entrada
+0011 - [ADD] soma x e y e armazena em y
+0100 - [SUB] subtrai x de y e armazena em y
+0101 - [MULT] multiplica o valor armazenado em y por 2
+0110 - [DIV] divido o valor armazenado em y por 2
+0111 - [MIN] armazena em y o minimo entre x e y
+1000 - [MAX] armazena em y o maximo entre x e y
+1001 - [DISP] armazena em z o valor de y
