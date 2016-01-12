@@ -35,37 +35,3 @@ module ULA (aULA, bULA, selectULA, output0ULA, statusULA);
     endcase
   end
 endmodule
-
-module tester(output0tester, statustester, atester, btester, selecttester);
-  input wire [3:0] output0tester;
-  input wire statustester;
-  output reg [3:0] atester;
-  output reg [3:0] btester;
-  output reg [2:0] selecttester;
-
-  initial begin
-    $dumpfile("ula.vcd");
-    $dumpvars;
-    atester = 4'b1000; btester = 4'b0010; selecttester = 3'b000;
-    #2 selecttester = 3'b001;
-    #2 selecttester = 3'b010;
-    #2 selecttester = 3'b011;
-    #2 selecttester = 3'b100;
-    #2 selecttester = 3'b101;
-    #2 selecttester = 3'b110;
-    #2 selecttester = 3'b111;
-    #2 $finish;
-  end
-
-endmodule
-
-module principal;
-  wire [3:0] a;
-  wire [3:0] b;
-  wire [2:0] select;
-  wire [3:0] output0;
-  wire status;
-
-  ULA ula(a, b, select, output0, status);
-  tester test(output0, status, a, b, select);
-endmodule
