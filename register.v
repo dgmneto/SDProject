@@ -11,13 +11,13 @@ module Register(inputRegister, comandRegister, clockRegister, valueRegister);
 		ShiftLeft = 3'b011,
 		ShiftRight = 3'b100;
 
-	always  @ (posedge clockRegister) begin
+	always  @ (negedge clockRegister) begin
 		case(comandRegister)
 			HOLD: valueRegister = valueRegister;
 			RESET: valueRegister = 4'b0000;
 			LOAD: valueRegister = inputRegister;
-			ShiftLeft: valueRegister=valueRegister << 1;
-			ShiftRight: valueRegister=valueRegister >> 1;
+			ShiftLeft: valueRegister = valueRegister << 1;
+			ShiftRight: valueRegister = valueRegister >> 1;
 		endcase
 	end
 endmodule
