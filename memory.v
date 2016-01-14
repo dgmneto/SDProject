@@ -1,24 +1,31 @@
-module Memory(addressMemory, comandMemory, dataMemory);
+module Memory(addressMemory, clockMemory, comandMemory, dataMemory);
   input wire [3:0] addressMemory;
+  input wire clockMemory;
   output reg [3:0] comandMemory;
-  output reg [3:0] dataMemory;
+  output reg signed [27:0] dataMemory;
 
-  reg [3:0] memMemory [0:1] [0:14];
+  reg [3:0] comandsMemory [0:14];
+  reg signed [27:0] datasMemory [0:14];
+  reg [3:0] memSizeMemory;
 
   initial begin
+    memSizeMemory = 5;
     //comand////////////////// //data////////////////////
-    memMemory[0][0] = 4'b0000; memMemory[1][0] = 4'b0000;
-    memMemory[0][1] = 4'b0001; memMemory[1][1] = 4'b0011;
-    memMemory[0][2] = 4'b0001; memMemory[1][2] = 4'b0011;
-    memMemory[0][3] = 4'b0001; memMemory[1][3] = 4'b0011;
-    memMemory[0][4] = 4'b0001; memMemory[1][4] = 4'b0011;
-    memMemory[0][5] = 4'b0001; memMemory[1][5] = 4'b0011;
-    memMemory[0][6] = 4'b0001; memMemory[1][6] = 4'b0011;
-    memMemory[0][7] = 4'b0001; memMemory[1][7] = 4'b0011;
+    comandsMemory[0] = 4'b0001; datasMemory[0] = 27'd350;
+    comandsMemory[1] = 4'b0011; datasMemory[1] = -27'd915;
+    comandsMemory[2] = 4'b0011; datasMemory[2] = 27'd2;
+    comandsMemory[3] = 4'b0110; datasMemory[3] = 27'd0;
+    comandsMemory[4] = 4'b1001; datasMemory[4] = 27'd0;
   end
 
-  always @(*) begin
-    comandMemory = memMemory[0][addressMemory];
-    dataMemory = memMemory[1][addressMemory];
+  always @(posedge clockMemory) begin
+    if (addressMemory < memSizeMemory) begin
+      comandMemory <= comandsMemory[addressMemory];
+      dataMemory <= datasMemory[addressMemory];
+    end
+    else begin
+      comandMemory <= 4'b1010;
+      dataMemory <= 27'd0;
+    end
   end
 endmodule

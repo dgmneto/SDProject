@@ -1,0 +1,26 @@
+(a + c - d)*2:
+memSizeMemory = 6;
+//comand////////////////// //data////////////////////
+comandsMemory[0] = 4'b0001; datasMemory[0] = 27'd3;
+comandsMemory[1] = 4'b0011; datasMemory[1] = 27'd5;
+comandsMemory[2] = 4'b0011; datasMemory[2] = 27'd7;
+comandsMemory[3] = 4'b0100; datasMemory[3] = 27'd2;
+comandsMemory[4] = 4'b0101; datasMemory[4] = 27'd0;
+comandsMemory[5] = 4'b1001; datasMemory[5] = 27'd0;
+
+(a + b)/2:
+memSizeMemory = 5;
+//comand////////////////// //data////////////////////
+comandsMemory[0] = 4'b0001; datasMemory[0] = 27'd350;
+comandsMemory[1] = 4'b0011; datasMemory[1] = -27'd915;
+comandsMemory[2] = 4'b0011; datasMemory[2] = 27'd2;
+comandsMemory[3] = 4'b0110; datasMemory[3] = 27'd0;
+comandsMemory[4] = 4'b1001; datasMemory[4] = 27'd0;
+
+max(a, b):
+memSizeMemory = 4;
+//comand////////////////// //data////////////////////
+comandsMemory[0] = 4'b0001; datasMemory[0] = 27'd500;
+comandsMemory[1] = 4'b0011; datasMemory[1] = -27'd50;
+comandsMemory[2] = 4'b1000; datasMemory[2] = 27'd0;
+comandsMemory[3] = 4'b1001; datasMemory[3] = 27'd0;

@@ -28,3 +28,6 @@ Controlador(contem 3 registradores(x, y e z) e uma ULA):
 0111 - [MIN] armazena em y o minimo entre x e y
 1000 - [MAX] armazena em y o maximo entre x e y
 1001 - [DISP] armazena em z o valor de y
+
+Compilar:
+iverilog -o main controler.v counter.v main.v memory.v register.v ula.v
